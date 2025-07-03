@@ -1,0 +1,6097 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/users/update-details": {
+      "post": {
+        "operationId": "updateUserDetails",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDetailsDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/update-privy-wallets": {
+      "post": {
+        "operationId": "updatePrivyWalletAddresses",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePrivyWalletAddressesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/me/upload-avatar": {
+      "post": {
+        "operationId": "uploadAvatar",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserAvatarDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/me/upload-avatar-file": {
+      "post": {
+        "operationId": "uploadAvatarFile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Avatar image file",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Avatar image file (max 5MB)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/me/delete-avatar": {
+      "delete": {
+        "operationId": "deleteAvatar",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "operationId": "getMe",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-form/tax-forms": {
+      "get": {
+        "operationId": "getAllForms",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaxFormVaultInfoDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tax Forms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-form/request/{id}": {
+      "post": {
+        "operationId": "requestTaxFormAccess",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestTaxFormAccessResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tax Forms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-form/access/{id}": {
+      "post": {
+        "operationId": "accessTaxForm",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccessTaxFormDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTaxFormResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tax Forms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-form/downloaded/{id}": {
+      "post": {
+        "operationId": "taxFormDownloaded",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Tax Forms"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-info/create": {
+      "post": {
+        "operationId": "createTaxInfo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaxInfoCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxInfoDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tax Info"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/tax-info/latest": {
+      "get": {
+        "operationId": "getLatestVaultOwnerTaxInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultWithTaxInfoDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tax Info"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/creator-handler/process-vault-creation/{vaultId}": {
+      "post": {
+        "operationId": "processCreatorConfig",
+        "parameters": [
+          {
+            "name": "vaultId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminDetailsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Creator Handler"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/evm-transaction-sender": {
+      "post": {
+        "operationId": "createTransaction",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendEvmTransactionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendEvmTransactionDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "EVM Transaction sender"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallet/current-user-wallets": {
+      "get": {
+        "operationId": "getCurrentUserWallets",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WalletDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallet/check-wallet": {
+      "post": {
+        "operationId": "checkWallet",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletStatusDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallet/create-wallet": {
+      "post": {
+        "operationId": "createWallet",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/sum-sub/token": {
+      "get": {
+        "operationId": "getToken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SumSubTokenResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "SumSub"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/sum-sub/add": {
+      "post": {
+        "operationId": "addApplicant",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SumSubApplicantDetailDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SumSubApplicantResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "SumSub"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vaults-creator/create": {
+      "post": {
+        "operationId": "createVaults",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VaultsCreatorConfigDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultsCreatorDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vaults Creator"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vaults-creator/{id}/status": {
+      "get": {
+        "operationId": "getVaultsCreationStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultsCreationStatusDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vaults Creator"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vaults-creator/{id}/info": {
+      "get": {
+        "operationId": "getVaultsInfo",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultsCreatorDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vaults Creator"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/paymaster": {
+      "post": {
+        "operationId": "paymaster",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymasterServiceRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymasterServiceResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notes": {
+      "post": {
+        "operationId": "createFundingNote",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFundingNoteDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Notes"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/direct-vaults/create-customer": {
+      "post": {
+        "operationId": "createCustom",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCustomerDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BridgeKYCEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Direct-vaults"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/direct-vaults/create-bankin-info": {
+      "post": {
+        "operationId": "createBankingInfo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBankingInfoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankingInfoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Direct-vaults"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/direct-vaults/check-kyc-status": {
+      "post": {
+        "operationId": "checkKYC",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckKycStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCustomerFromKycResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Direct-vaults"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/direct-vaults/create-liquidation-address": {
+      "post": {
+        "operationId": "createLiquidationAddress",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLiquidationAddressShortDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiquidationAddressEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Direct-vaults"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/direct-vaults/get-liquidation-address-drain-history": {
+      "post": {
+        "operationId": "getLiqAddressDrainHistory",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetLiqAddressDrainHistoryDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetLiqAddressDrainHistoryResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Direct-vaults"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/banking-info": {
+      "get": {
+        "operationId": "getBankingInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankingInfoEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Banking info"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/banking-info/{id}": {
+      "get": {
+        "operationId": "getBankingInfoById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankingInfoEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Banking info"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/liquidation-addresses": {
+      "get": {
+        "operationId": "getLiquidationAddressByAuth0Id",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LiquidationAddressEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Liquidation addresses"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/liquidation-addresses/{id}": {
+      "get": {
+        "operationId": "getLiquidationAddressById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiquidationAddressEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Liquidation addresses"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts": {
+      "get": {
+        "operationId": "getVirtualAccountsByAuth0Id",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VirtualAccountEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createVirtualAccount",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVirtualAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VirtualAccountEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/unified": {
+      "get": {
+        "operationId": "getUnifiedAccounts",
+        "parameters": [
+          {
+            "name": "transferType",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transfer type",
+            "schema": {
+              "example": "bridge",
+              "enum": [
+                "bridge",
+                "direct_web3"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "vaultName",
+            "required": false,
+            "in": "query",
+            "description": "Filter by vault name",
+            "schema": {
+              "example": "My Vault",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all unified accounts (both Bridge and direct Web3) with optional filtering",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bridgeAccounts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/LiquidationAddressEntity"
+                      }
+                    },
+                    "directRecipients": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DirectRecipientEntity"
+                      }
+                    },
+                    "total": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createUnifiedAccount",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUnifiedAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Create unified account - either Bridge liquidation address or direct Web3 recipient",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/LiquidationAddressEntity"
+                    },
+                    {
+                      "$ref": "#/components/schemas/DirectRecipientEntity"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/{id}": {
+      "get": {
+        "operationId": "getVirtualAccountById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VirtualAccountEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "updateVirtualAccount",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch virtual account from Bridge and save updated version to the local DB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VirtualAccountEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/{virtualAccountId}/activity/all": {
+      "get": {
+        "operationId": "getVirtualAccountActvity",
+        "parameters": [
+          {
+            "name": "virtualAccountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "customerId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "eventType",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch all virtual account activity from Bridge (non-paginated)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VirtualAccountActivityItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/{virtualAccountId}/activity": {
+      "get": {
+        "operationId": "getVirtualAccountActivityPaginated",
+        "parameters": [
+          {
+            "name": "virtualAccountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "customerId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Maximum number of items to return per page",
+            "schema": {
+              "example": 20,
+              "type": "string"
+            }
+          },
+          {
+            "name": "startingAfterId",
+            "required": false,
+            "in": "query",
+            "description": "ID to start pagination after",
+            "schema": {
+              "example": "va_event_123",
+              "type": "string"
+            }
+          },
+          {
+            "name": "endingBeforeId",
+            "required": false,
+            "in": "query",
+            "description": "ID to end pagination before",
+            "schema": {
+              "example": "va_event_456",
+              "type": "string"
+            }
+          },
+          {
+            "name": "eventType",
+            "required": false,
+            "in": "query",
+            "description": "Filter by event type",
+            "schema": {
+              "example": "funds_received",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch virtual account activity from Bridge with pagination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VirtualAccountActivityItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/direct-recipients": {
+      "get": {
+        "operationId": "getDirectRecipients",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get all direct Web3 recipients for the authenticated user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DirectRecipientEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/virtual-accounts/direct-recipients/{id}": {
+      "get": {
+        "operationId": "getDirectRecipientById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get a specific direct Web3 recipient by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectRecipientEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Virtual accounts"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/vaults": {
+      "get": {
+        "operationId": "getAllUserVaults",
+        "parameters": [
+          {
+            "name": "role",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VaultDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}": {
+      "get": {
+        "operationId": "getVaultById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/info": {
+      "get": {
+        "operationId": "getVaultInfoById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultInfoDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/info-by-token-id": {
+      "get": {
+        "operationId": "getVaultInfoByIdAndTokenId",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tokenId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultInfoDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/status": {
+      "get": {
+        "operationId": "getVaultTransactionStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "example": "successful",
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultTransactionStatusDTO"
+                },
+                "example": "successful"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/self-managed-status": {
+      "get": {
+        "operationId": "getSelfManagedVaultTransactionStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelfManagedVaultTransactionStatusDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault": {
+      "post": {
+        "operationId": "createVault",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VaultCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/update-role-email": {
+      "post": {
+        "operationId": "updateRoleEmail",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/finish-self-managed-vault-claim": {
+      "post": {
+        "operationId": "finishSelfManagedVaultClaim",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/{id}/unwatch": {
+      "post": {
+        "operationId": "unwatchVault",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "role",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/watch-all": {
+      "post": {
+        "operationId": "watchAllVaults",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VaultDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/keys/{walletAddress}": {
+      "get": {
+        "operationId": "getVaultKeys",
+        "parameters": [
+          {
+            "name": "walletAddress",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VaultKeysDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/create-self-managed": {
+      "post": {
+        "operationId": "createSelfManagedVault",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VaultCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/vault/sign-vault-transaction": {
+      "post": {
+        "operationId": "signVaultTransaction",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignVaultTransactionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignVaultTransactionResultDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Vault"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/persona/create-inquiry-id": {
+      "post": {
+        "operationId": "createInquiryId",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaInquiryIdResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "persona"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/persona/update-applicant": {
+      "patch": {
+        "operationId": "updateApplicant",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonaApplicantDetailDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaApplicantResponseDTO"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "persona"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/address-activity": {
+      "post": {
+        "operationId": "create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAddressActivityDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/address-activity/{address}": {
+      "get": {
+        "operationId": "find",
+        "parameters": [
+          {
+            "name": "address",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/webhook/alchemy": {
+      "post": {
+        "operationId": "handleAlchemyWebhook",
+        "parameters": [
+          {
+            "name": "x-alchemy-signature",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/support-tickets": {
+      "post": {
+        "operationId": "fileTicket",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSupportTicketDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Support Tickets"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transaction-items": {
+      "get": {
+        "operationId": "getTransactionItems",
+        "parameters": [
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Max number of items to return per page",
+            "schema": {
+              "default": 20,
+              "example": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "cursor",
+            "required": false,
+            "in": "query",
+            "description": "Base64-encoded cursor for paginated results (from previous nextCursor)",
+            "schema": {
+              "example": "eyJpZCI6InRyYW5zYWN0aW9uSWQifQ==",
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transaction type",
+            "schema": {
+              "example": "funds_received",
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transaction source",
+            "schema": {
+              "enum": [
+                "alchemy",
+                "bridge",
+                "manual"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "currency",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transaction currency code",
+            "schema": {
+              "example": "USD",
+              "type": "string"
+            }
+          },
+          {
+            "name": "virtualAccountId",
+            "required": false,
+            "in": "query",
+            "description": "Filter by virtual account ID",
+            "schema": {
+              "example": "va_abc123",
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transactions occurring after this date (ISO format)",
+            "schema": {
+              "example": "2024-01-01T00:00:00.000Z",
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "required": false,
+            "in": "query",
+            "description": "Filter by transactions occurring before this date (ISO format)",
+            "schema": {
+              "example": "2024-12-31T23:59:59.999Z",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTransactionItemsResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Transaction Items"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transaction-items/{id}": {
+      "get": {
+        "operationId": "getTransactionItemById",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionItemResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Transaction Items"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transaction-items/virtual-account/{virtualAccountId}": {
+      "get": {
+        "operationId": "getTransactionItemsByVirtualAccountId",
+        "parameters": [
+          {
+            "name": "virtualAccountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransactionItemResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Transaction Items"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transaction-items/test": {
+      "post": {
+        "operationId": "testUpsert",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Transaction Items"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/forex/rates": {
+      "get": {
+        "operationId": "getForexRates",
+        "summary": "Get current forex rates from cache",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Current forex rates"
+          }
+        },
+        "tags": [
+          "forex"
+        ]
+      }
+    },
+    "/forex/user/rates": {
+      "get": {
+        "operationId": "getUserForexRates",
+        "summary": "Get current forex rates for authenticated users (USD and EUR)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Current forex rates for authenticated users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForexRatesResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "forex"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/forex/fetch": {
+      "post": {
+        "operationId": "fetchForexRates",
+        "summary": "Manually fetch and update forex rates",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Forex rates updated successfully"
+          }
+        },
+        "tags": [
+          "forex"
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "operationId": "check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/test": {
+      "get": {
+        "operationId": "test",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Getrewards",
+    "description": "Backend api documentation",
+    "version": "0.2.23",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "UpdateUserDetailsDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "entityName": {
+            "type": "string"
+          },
+          "jurisdiction": {
+            "type": "string"
+          },
+          "registrationId": {
+            "type": "string"
+          },
+          "countryOfResidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "CustomerEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "The Auth0 ID associated with the user"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the customer record"
+          },
+          "bridgeCustomerId": {
+            "type": "string",
+            "description": "The Bridge customer ID for the user"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name of the customer"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name of the customer"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the customer"
+          },
+          "status": {
+            "type": "string",
+            "description": "The current status of the customer (e.g., active, suspended)"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of customer, either individual or business",
+            "enum": [
+              "individual",
+              "business"
+            ]
+          },
+          "future_requirements_due": {
+            "description": "List of future requirements that are due for the customer",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requirements_due": {
+            "description": "List of current requirements that are due for the customer",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "capabilities": {
+            "type": "object",
+            "description": "Capabilities of the customer, represented as key-value pairs",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "persona_inquiry_type": {
+            "type": "string",
+            "description": "Type of Persona inquiry performed for the customer (e.g., identity verification)"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the customer record was created"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the customer record was last updated"
+          },
+          "rejection_reasons": {
+            "description": "Reasons for rejection, if applicable",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "has_accepted_terms_of_service": {
+            "type": "boolean",
+            "description": "Whether the customer has accepted the terms of service"
+          },
+          "signed_agreement_id": {
+            "type": "string",
+            "description": "Internal identifier for the signed TOS agreement that can be used for attestation"
+          },
+          "endorsements": {
+            "description": "List of endorsements with the name and status of each endorsement",
+            "items": {
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "bridgeCustomerId",
+          "first_name",
+          "last_name",
+          "email",
+          "status",
+          "type",
+          "future_requirements_due",
+          "requirements_due",
+          "capabilities",
+          "persona_inquiry_type",
+          "created_at",
+          "updated_at",
+          "rejection_reasons",
+          "has_accepted_terms_of_service",
+          "endorsements"
+        ]
+      },
+      "BridgeKYCEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "The Auth0 ID associated with the user"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the KYC record"
+          },
+          "bridgeKycId": {
+            "type": "string",
+            "description": "Unique identifier from Bridge for the KYC process"
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Full name of the user undergoing KYC"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of the user"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of KYC process (e.g., individual, business)"
+          },
+          "kyc_link": {
+            "type": "string",
+            "description": "Link to the KYC document or verification page"
+          },
+          "tos_link": {
+            "type": "string",
+            "description": "Link to the Terms of Service document"
+          },
+          "kyc_status": {
+            "type": "string",
+            "description": "Status of the KYC process (e.g., pending, approved)"
+          },
+          "tos_status": {
+            "type": "string",
+            "description": "Status of the Terms of Service agreement (e.g., accepted, not accepted)"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the KYC record was created"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Customer ID linked to the user in your system"
+          },
+          "persona_inquiry_type": {
+            "type": "string",
+            "description": "Type of Persona inquiry used (e.g., identity, verification)"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "bridgeKycId",
+          "full_name",
+          "email",
+          "type",
+          "kyc_link",
+          "tos_link",
+          "kyc_status",
+          "tos_status",
+          "created_at",
+          "customer_id",
+          "persona_inquiry_type"
+        ]
+      },
+      "UserResponseDTO": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isPremium": {
+            "type": "boolean"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "avatarS3Key": {
+            "type": "string"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/CustomerEntity"
+          },
+          "bridgeKyc": {
+            "$ref": "#/components/schemas/BridgeKYCEntity"
+          },
+          "countryOfResidence": {
+            "type": "string"
+          },
+          "privyWalletAddress": {
+            "type": "string"
+          },
+          "privySmartWalletAddress": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "email",
+          "name",
+          "isPremium"
+        ]
+      },
+      "UpdatePrivyWalletAddressesDto": {
+        "type": "object",
+        "properties": {
+          "privyWalletAddress": {
+            "type": "string",
+            "description": "Privy wallet address (EOA wallet)",
+            "example": "0x1234567890abcdef1234567890abcdef12345678"
+          },
+          "privySmartWalletAddress": {
+            "type": "string",
+            "description": "Privy smart wallet address (smart contract wallet)",
+            "example": "0xabcdef1234567890abcdef1234567890abcdef12"
+          }
+        },
+        "required": [
+          "privyWalletAddress",
+          "privySmartWalletAddress"
+        ]
+      },
+      "UpdateUserAvatarDto": {
+        "type": "object",
+        "properties": {
+          "avatar": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "avatar"
+        ]
+      },
+      "TaxUserType": {
+        "type": "string",
+        "enum": [
+          "payer",
+          "recipient"
+        ]
+      },
+      "TaxFormVaultInfoDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "vaultId": {
+            "type": "string"
+          },
+          "s3Key": {
+            "type": "string"
+          },
+          "shareHolderRoleAddress": {
+            "type": "string"
+          },
+          "formType": {
+            "type": "string"
+          },
+          "userType": {
+            "$ref": "#/components/schemas/TaxUserType"
+          },
+          "taxYear": {
+            "type": "number"
+          },
+          "projectName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "vaultId",
+          "s3Key",
+          "shareHolderRoleAddress",
+          "formType",
+          "taxYear",
+          "projectName"
+        ]
+      },
+      "RequestTaxFormAccessResponseDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "AccessTaxFormDto": {
+        "type": "object",
+        "properties": {
+          "securityCode": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "securityCode"
+        ]
+      },
+      "AccessTaxFormResponseDto": {
+        "type": "object",
+        "properties": {
+          "s3Key": {
+            "type": "string"
+          },
+          "downloadUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "s3Key",
+          "downloadUrl"
+        ]
+      },
+      "TaxFormType": {
+        "type": "string",
+        "enum": [
+          "1099",
+          "W9",
+          "W8_BEN",
+          "W8_BEN_E"
+        ]
+      },
+      "TaxInfo1099FormDto": {
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "ssn": {
+            "type": "string"
+          },
+          "ein": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "businessName",
+          "address",
+          "city",
+          "state",
+          "country",
+          "zip"
+        ]
+      },
+      "FedTaxClassification": {
+        "type": "string",
+        "enum": [
+          "C Corporation",
+          "S Corporation",
+          "Partnership",
+          "Trust / Estate",
+          "Individual / Sole Proprietor or single-member LLC",
+          "LLC",
+          "other"
+        ]
+      },
+      "TaxInfoW9FormDto": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "businessName": {
+            "type": "string"
+          },
+          "fedTaxClassification": {
+            "$ref": "#/components/schemas/FedTaxClassification"
+          },
+          "llcClassification": {
+            "type": "string"
+          },
+          "otherClassification": {
+            "type": "string"
+          },
+          "payeeCode": {
+            "type": "string"
+          },
+          "exemptionCode": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "ssn": {
+            "type": "string"
+          },
+          "ein": {
+            "type": "string"
+          },
+          "readAndUnderstand": {
+            "type": "boolean"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "consent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "fullName",
+          "fedTaxClassification",
+          "address",
+          "city",
+          "state",
+          "country",
+          "zip",
+          "readAndUnderstand",
+          "signature",
+          "date",
+          "consent"
+        ]
+      },
+      "TaxInfoW8BenFormDto": {
+        "type": "object",
+        "properties": {
+          "ownerName": {
+            "type": "string"
+          },
+          "citizenshipCountry": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "mailingAddress": {
+            "type": "string"
+          },
+          "mailingCity": {
+            "type": "string"
+          },
+          "mailingCountry": {
+            "type": "string"
+          },
+          "usTaxId": {
+            "type": "string"
+          },
+          "foreignTaxId": {
+            "type": "string"
+          },
+          "ftinNotRequired": {
+            "type": "boolean"
+          },
+          "referenceNumbers": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "countryOfTaxTreaty": {
+            "type": "string"
+          },
+          "treatyArticle": {
+            "type": "string"
+          },
+          "paragraph": {
+            "type": "string"
+          },
+          "withholdingRate": {
+            "type": "string"
+          },
+          "typeOfIncome": {
+            "type": "string"
+          },
+          "additionalConditions": {
+            "type": "string"
+          },
+          "certify": {
+            "type": "boolean"
+          },
+          "readAndUnderstand": {
+            "type": "boolean"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "signerName": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "consent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ownerName",
+          "citizenshipCountry",
+          "address",
+          "city",
+          "country",
+          "ftinNotRequired",
+          "dateOfBirth",
+          "certify",
+          "readAndUnderstand",
+          "signature",
+          "signerName",
+          "date",
+          "consent"
+        ]
+      },
+      "IdentificationStatus": {
+        "type": "string",
+        "enum": [
+          "Simple Trust",
+          "Private Foundation",
+          "Complex Trust",
+          "Central Bank of Issue",
+          "Partnership",
+          "Estate",
+          "Grantor Trust",
+          "Disregarded Entity",
+          "International Organization",
+          "Tax-exempt Organization",
+          "Corporation",
+          "Foreign Government - Controlled Entity",
+          "Foreign Government - Integral Part"
+        ]
+      },
+      "FATCAStatus": {
+        "type": "string",
+        "enum": [
+          "Participating FFI",
+          "Reporting Model 1 FFI",
+          "Reporting Model 2 FFI",
+          "Sponsored FFI (Complete Part IV)",
+          "Certified deemed-compliant nonregistering local bank (Complete Part V)",
+          "Certified deemed-compliant FFI with only low-value accounts (Complete Part VI)",
+          "Certified deemed-compliant sponsored, closely held investment vehicle (Complete Part VII)",
+          "Certified deemed-compliant limited life debt investment entity (Complete Part VIII)",
+          "Certain investment entities that don’t maintain financial accounts (Complete Part IX)",
+          "Owner-documented FFI (Complete Part X)",
+          "Restricted distributor (Complete Part XI)",
+          "Nonreporting IGA FFI (Complete Part XII)",
+          "Foreign government, government of a U.S. possession, or foreign central bank of issue (Complete Part XIII)",
+          "International organization (Complete Part XIV)",
+          "Exempt retirement plans (Complete Part XV)",
+          "Entity wholly owned by exempt beneficial owners (Complete Part XVI)",
+          "Territory financial institution (Complete Part XVII)",
+          "Excepted nonfinancial group entity (Complete Part XVIII)",
+          "Excepted nonfinancial start-up company (Complete Part XIX)",
+          "Excepted nonfinancial entity in liquidation or bankruptcy (Complete Part XX)",
+          "501(c) organization (Complete Part XXI)",
+          "Nonprofit organization (Complete Part XXII)",
+          "Publicly traded NFFE or NFFE affiliate of a publicly traded corporation (Complete Part XXIII)",
+          "Excepted territory NFFE (Complete Part XXIV)",
+          "Active NFFE (Complete Part XXV)",
+          "Passive NFFE (Complete Part XXVI)",
+          "Excepted inter-affiliate FFI (Complete Part XXVII)",
+          "Direct reporting NFFE",
+          "Sponsored direct reporting NFFE (Complete Part XXVIII)",
+          "Account that is not a financial account",
+          "Nonparticipating FFI (including an FFI related to a Reporting IGA FFI other than a deemed-compliant FFI, participating FFI, or exempt beneficial owner)",
+          "Registered deemed-compliant FFI (other than a reporting Model 1 FFI, sponsored FFI, or nonreporting IGA FFI covered in Part XII)"
+        ]
+      },
+      "EntityFATCAStatus": {
+        "type": "string",
+        "enum": [
+          "Branch treated as nonparticipating FFI",
+          "Reporting Model 1 FFI",
+          "U.S. Branch",
+          "Participating FFI",
+          "Reporting Model 2 FFI"
+        ]
+      },
+      "TaxTreatyBenefits": {
+        "type": "string",
+        "enum": [
+          "Government",
+          "Tax-exempt pension trust or pension fund",
+          "Other tax-exempt organization",
+          "Publicly traded corporation",
+          "Subsidiary of a publicly traded corporation",
+          "Company that meets the ownership and base erosion test",
+          "Company that meets the derivative benefits test",
+          "Company with an item of income that meets active trade or business test",
+          "Favorable discretionary determination by the U.S. competent authority received",
+          "No LOB article in treaty",
+          "Other (specify Article and paragraph):"
+        ]
+      },
+      "SponsoredFIICertify": {
+        "type": "string",
+        "enum": [
+          "1",
+          "2"
+        ]
+      },
+      "TrusteeCountry": {
+        "type": "string",
+        "enum": [
+          "U.S",
+          "FOREIGN"
+        ]
+      },
+      "TaxInfoW8BenEFormDto": {
+        "type": "object",
+        "properties": {
+          "organizationName": {
+            "type": "string"
+          },
+          "countryOfIncorporation": {
+            "type": "string"
+          },
+          "disregardedEntityName": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/IdentificationStatus"
+          },
+          "isTreatyClaim": {
+            "type": "boolean"
+          },
+          "fatcaStatus": {
+            "$ref": "#/components/schemas/FATCAStatus"
+          },
+          "permanentResidenceAddress": {
+            "type": "string"
+          },
+          "permanentResidenceCity": {
+            "type": "string"
+          },
+          "permanentResidenceCountry": {
+            "type": "string"
+          },
+          "mailingAddress": {
+            "type": "string"
+          },
+          "mailingCity": {
+            "type": "string"
+          },
+          "mailingCountry": {
+            "type": "string"
+          },
+          "usTaxId": {
+            "type": "string"
+          },
+          "giin": {
+            "type": "string"
+          },
+          "foreignTaxId": {
+            "type": "string"
+          },
+          "ftinNotRequired": {
+            "type": "boolean"
+          },
+          "referenceNumbers": {
+            "type": "string"
+          },
+          "entityFatcaStatus": {
+            "$ref": "#/components/schemas/EntityFATCAStatus"
+          },
+          "entityAddress": {
+            "type": "string"
+          },
+          "entityCity": {
+            "type": "string"
+          },
+          "entityCountry": {
+            "type": "string"
+          },
+          "entityGiin": {
+            "type": "string"
+          },
+          "certificateTaxTreatyA": {
+            "type": "boolean"
+          },
+          "certificateTaxTreatyACountry": {
+            "type": "string"
+          },
+          "certificateTaxTreatyB": {
+            "type": "boolean"
+          },
+          "certificateTaxTreatyBBenefit": {
+            "$ref": "#/components/schemas/TaxTreatyBenefits"
+          },
+          "certificateTaxTreatyBOther": {
+            "type": "string"
+          },
+          "certificateTaxTreatyC": {
+            "type": "boolean"
+          },
+          "ratesTreatyArticle": {
+            "type": "string"
+          },
+          "ratesParagraph": {
+            "type": "string"
+          },
+          "ratesWithholdingRate": {
+            "type": "string"
+          },
+          "ratesTypeOfIncome": {
+            "type": "string"
+          },
+          "ratesAdditionalConditions": {
+            "type": "string"
+          },
+          "sponsoringEntityName": {
+            "type": "string"
+          },
+          "sponsoringEntityCertify": {
+            "$ref": "#/components/schemas/SponsoredFIICertify"
+          },
+          "certify18": {
+            "type": "boolean"
+          },
+          "certify19": {
+            "type": "boolean"
+          },
+          "sponsoringEntityNamePartVII": {
+            "type": "string"
+          },
+          "certify21": {
+            "type": "boolean"
+          },
+          "certify22": {
+            "type": "boolean"
+          },
+          "certify23": {
+            "type": "boolean"
+          },
+          "certify24A": {
+            "type": "boolean"
+          },
+          "certify24B": {
+            "type": "boolean"
+          },
+          "certify24C": {
+            "type": "boolean"
+          },
+          "certify24D": {
+            "type": "boolean"
+          },
+          "certify25A": {
+            "type": "boolean"
+          },
+          "certify25B": {
+            "type": "boolean"
+          },
+          "certify25C": {
+            "type": "boolean"
+          },
+          "certify26": {
+            "type": "boolean"
+          },
+          "country26": {
+            "type": "string"
+          },
+          "institutionType26": {
+            "type": "string"
+          },
+          "model1Iga26": {
+            "type": "boolean"
+          },
+          "model2Iga26": {
+            "type": "boolean"
+          },
+          "trusteeName26": {
+            "type": "string"
+          },
+          "trusteeCountry26": {
+            "$ref": "#/components/schemas/TrusteeCountry"
+          },
+          "certify27": {
+            "type": "boolean"
+          },
+          "certify28A": {
+            "type": "boolean"
+          },
+          "certify28B": {
+            "type": "boolean"
+          },
+          "certify29A": {
+            "type": "boolean"
+          },
+          "certify29B": {
+            "type": "boolean"
+          },
+          "certify29C": {
+            "type": "boolean"
+          },
+          "certify29D": {
+            "type": "boolean"
+          },
+          "certify29E": {
+            "type": "boolean"
+          },
+          "certify29F": {
+            "type": "boolean"
+          },
+          "certify30": {
+            "type": "boolean"
+          },
+          "certify31": {
+            "type": "boolean"
+          },
+          "certify32": {
+            "type": "boolean"
+          },
+          "certify33": {
+            "type": "boolean"
+          },
+          "date33": {
+            "type": "string"
+          },
+          "certify34": {
+            "type": "boolean"
+          },
+          "date34": {
+            "type": "string"
+          },
+          "certify35": {
+            "type": "boolean"
+          },
+          "date35": {
+            "type": "string"
+          },
+          "certify36": {
+            "type": "boolean"
+          },
+          "certify37A": {
+            "type": "boolean"
+          },
+          "exchange37A": {
+            "type": "string"
+          },
+          "certify37B": {
+            "type": "boolean"
+          },
+          "name37B": {
+            "type": "string"
+          },
+          "securities37B": {
+            "type": "string"
+          },
+          "certify38": {
+            "type": "boolean"
+          },
+          "certify39": {
+            "type": "boolean"
+          },
+          "certify40A": {
+            "type": "boolean"
+          },
+          "certify40B": {
+            "type": "boolean"
+          },
+          "certify40C": {
+            "type": "boolean"
+          },
+          "certify41": {
+            "type": "boolean"
+          },
+          "name42": {
+            "type": "string"
+          },
+          "certify43": {
+            "type": "boolean"
+          },
+          "name1Part44": {
+            "type": "string"
+          },
+          "address1Part44": {
+            "type": "string"
+          },
+          "tin1Part44": {
+            "type": "string"
+          },
+          "name2Part44": {
+            "type": "string"
+          },
+          "address2Part44": {
+            "type": "string"
+          },
+          "tin2Part44": {
+            "type": "string"
+          },
+          "name3Part44": {
+            "type": "string"
+          },
+          "address3Part44": {
+            "type": "string"
+          },
+          "tin3Part44": {
+            "type": "string"
+          },
+          "name4Part44": {
+            "type": "string"
+          },
+          "address4Part44": {
+            "type": "string"
+          },
+          "tin4Part44": {
+            "type": "string"
+          },
+          "name5Part44": {
+            "type": "string"
+          },
+          "address5Part44": {
+            "type": "string"
+          },
+          "tin5Part44": {
+            "type": "string"
+          },
+          "name6Part44": {
+            "type": "string"
+          },
+          "address6Part44": {
+            "type": "string"
+          },
+          "tin6Part44": {
+            "type": "string"
+          },
+          "name7Part44": {
+            "type": "string"
+          },
+          "address7Part44": {
+            "type": "string"
+          },
+          "tin7Part44": {
+            "type": "string"
+          },
+          "name8Part44": {
+            "type": "string"
+          },
+          "address8Part44": {
+            "type": "string"
+          },
+          "tin8Part44": {
+            "type": "string"
+          },
+          "name9Part44": {
+            "type": "string"
+          },
+          "address9Part44": {
+            "type": "string"
+          },
+          "tin9Part44": {
+            "type": "string"
+          },
+          "certify": {
+            "type": "boolean"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "signerName": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "consent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "organizationName",
+          "countryOfIncorporation",
+          "status",
+          "fatcaStatus",
+          "permanentResidenceAddress",
+          "permanentResidenceCity",
+          "permanentResidenceCountry",
+          "certify",
+          "signature",
+          "signerName",
+          "date",
+          "consent"
+        ]
+      },
+      "TaxInfoCreationDto": {
+        "type": "object",
+        "properties": {
+          "vaultId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "formType": {
+            "$ref": "#/components/schemas/TaxFormType"
+          },
+          "shareHolderRoleAddress": {
+            "type": "string"
+          },
+          "t1099FormDetails": {
+            "$ref": "#/components/schemas/TaxInfo1099FormDto"
+          },
+          "w9FormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW9FormDto"
+          },
+          "w8BenFormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW8BenFormDto"
+          },
+          "w8BenEFormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW8BenEFormDto"
+          }
+        },
+        "required": [
+          "vaultId",
+          "email",
+          "formType"
+        ]
+      },
+      "TaxInfoDto": {
+        "type": "object",
+        "properties": {
+          "vaultId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "formType": {
+            "$ref": "#/components/schemas/TaxFormType"
+          },
+          "shareHolderRoleAddress": {
+            "type": "string"
+          },
+          "t1099FormDetails": {
+            "$ref": "#/components/schemas/TaxInfo1099FormDto"
+          },
+          "w9FormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW9FormDto"
+          },
+          "w8BenFormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW8BenFormDto"
+          },
+          "w8BenEFormDetails": {
+            "$ref": "#/components/schemas/TaxInfoW8BenEFormDto"
+          },
+          "id": {
+            "type": "string"
+          },
+          "auth0Id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "vaultId",
+          "email",
+          "formType",
+          "id",
+          "auth0Id"
+        ]
+      },
+      "TShareRoleDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sharePercentage": {
+            "type": "number"
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "count": {
+            "type": "number"
+          },
+          "shareHolderRoleAddress": {
+            "type": "string"
+          },
+          "totalIncome": {
+            "type": "string"
+          },
+          "watching": {
+            "type": "boolean"
+          },
+          "taxInfoProvided": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "sharePercentage",
+          "emails",
+          "count"
+        ]
+      },
+      "TRANSACTION_STATUS": {
+        "type": "string",
+        "enum": [
+          "created",
+          "submitted",
+          "successful",
+          "rejected"
+        ]
+      },
+      "VaultDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TShareRoleDto"
+            }
+          },
+          "profitSwitchName": {
+            "type": "string"
+          },
+          "profitSwitchAmount": {
+            "type": "number"
+          },
+          "profitSwitchAddress": {
+            "type": "string"
+          },
+          "ownerName": {
+            "type": "string"
+          },
+          "ownerEmail": {
+            "type": "string"
+          },
+          "adminWalletAddress": {
+            "type": "string"
+          },
+          "vaultFeePercentage": {
+            "type": "number"
+          },
+          "taxFormEnabled": {
+            "type": "boolean"
+          },
+          "agreeToTOSAndPP": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "vaultAddress": {
+            "type": "string"
+          },
+          "watching": {
+            "type": "boolean"
+          },
+          "currentFunds": {
+            "type": "string"
+          },
+          "totalPaid": {
+            "type": "string"
+          },
+          "alreadyClaimed": {
+            "type": "boolean"
+          },
+          "tokenAddress": {
+            "type": "string"
+          },
+          "tokenId": {
+            "type": "string"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "claimable": {
+            "type": "string"
+          },
+          "shareholderManagerAddress": {
+            "type": "string"
+          },
+          "transactionHash": {
+            "type": "string"
+          },
+          "transactionStatus": {
+            "$ref": "#/components/schemas/TRANSACTION_STATUS"
+          },
+          "selfManaged": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "userId",
+          "projectName",
+          "roles",
+          "ownerName",
+          "ownerEmail",
+          "adminWalletAddress",
+          "vaultFeePercentage",
+          "agreeToTOSAndPP",
+          "id",
+          "watching",
+          "shareholderManagerAddress"
+        ]
+      },
+      "VaultWithTaxInfoDto": {
+        "type": "object",
+        "properties": {
+          "vaultInfo": {
+            "$ref": "#/components/schemas/VaultDto"
+          },
+          "taxInfo": {
+            "$ref": "#/components/schemas/TaxInfoDto"
+          }
+        },
+        "required": [
+          "vaultInfo"
+        ]
+      },
+      "AdminDetailsDto": {
+        "type": "object",
+        "properties": {
+          "walletAddress": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "walletAddress"
+        ]
+      },
+      "TRANSACTION_TYPE": {
+        "type": "string",
+        "enum": [
+          "claim_vault_keys",
+          "send_nfts",
+          "send_usdc",
+          "claim_usdc",
+          "reclaim_vault_keys"
+        ]
+      },
+      "SendEvmTransactionDto": {
+        "type": "object",
+        "properties": {
+          "transactionType": {
+            "$ref": "#/components/schemas/TRANSACTION_TYPE"
+          },
+          "to": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "transactionType",
+          "to",
+          "data"
+        ]
+      },
+      "WALLET_TYPE": {
+        "type": "string",
+        "enum": [
+          "metamask",
+          "coinbase",
+          "coinbase-smart-wallet",
+          "wallet-connect"
+        ]
+      },
+      "WalletDto": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "auth0Id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "walletType": {
+            "$ref": "#/components/schemas/WALLET_TYPE"
+          }
+        },
+        "required": [
+          "address",
+          "auth0Id",
+          "createdAt",
+          "walletType"
+        ]
+      },
+      "WalletCreationDto": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "walletType": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "address",
+          "walletType"
+        ]
+      },
+      "WALLET_STATUS": {
+        "type": "string",
+        "enum": [
+          "WALLET_BELONGS_TO_SOMEONE_ELSE",
+          "WALLET_ALREADY_ADDED",
+          "WALLET_NOT_ASSIGNED"
+        ]
+      },
+      "WalletStatusDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/WALLET_STATUS"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "SumSubTokenResponseDTO": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "userId"
+        ]
+      },
+      "ReviewStatus": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "completed"
+        ]
+      },
+      "SumSubApplicantDetailDTO": {
+        "type": "object",
+        "properties": {
+          "applicantId": {
+            "type": "string"
+          },
+          "applicantStatus": {
+            "$ref": "#/components/schemas/ReviewStatus"
+          }
+        },
+        "required": [
+          "applicantId"
+        ]
+      },
+      "SumSubApplicantResponseDTO": {
+        "type": "object",
+        "properties": {
+          "applicantId": {
+            "type": "string"
+          },
+          "auth0Id": {
+            "type": "string"
+          },
+          "applicantStatus": {
+            "$ref": "#/components/schemas/ReviewStatus"
+          }
+        },
+        "required": [
+          "applicantId",
+          "auth0Id"
+        ]
+      },
+      "CreatorVaultDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TShareRoleDto"
+            }
+          },
+          "profitSwitchName": {
+            "type": "string"
+          },
+          "profitSwitchAmount": {
+            "type": "number"
+          },
+          "profitSwitchAddress": {
+            "type": "string"
+          },
+          "ownerName": {
+            "type": "string"
+          },
+          "ownerEmail": {
+            "type": "string"
+          },
+          "adminWalletAddress": {
+            "type": "string"
+          },
+          "vaultFeePercentage": {
+            "type": "number"
+          },
+          "taxFormEnabled": {
+            "type": "boolean"
+          },
+          "agreeToTOSAndPP": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "vaultAddress": {
+            "type": "string"
+          },
+          "watching": {
+            "type": "boolean"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "shareholderManagerAddress": {
+            "type": "string"
+          },
+          "transactionHash": {
+            "type": "string"
+          },
+          "transactionStatus": {
+            "$ref": "#/components/schemas/TRANSACTION_STATUS"
+          }
+        },
+        "required": [
+          "userId",
+          "projectName",
+          "roles",
+          "ownerName",
+          "ownerEmail",
+          "adminWalletAddress",
+          "vaultFeePercentage",
+          "agreeToTOSAndPP"
+        ]
+      },
+      "TaxInfoVaultsConfigDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "formType": {
+            "$ref": "#/components/schemas/TaxFormType"
+          },
+          "t1099FormDetails": {
+            "$ref": "#/components/schemas/TaxInfo1099FormDto"
+          }
+        },
+        "required": [
+          "email",
+          "formType",
+          "t1099FormDetails"
+        ]
+      },
+      "VaultsCreatorConfigDto": {
+        "type": "object",
+        "properties": {
+          "vaults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatorVaultDto"
+            }
+          },
+          "taxFormEnabled": {
+            "type": "boolean"
+          },
+          "ownerTaxInfo": {
+            "$ref": "#/components/schemas/TaxInfoVaultsConfigDto"
+          }
+        },
+        "required": [
+          "vaults",
+          "taxFormEnabled"
+        ]
+      },
+      "VaultsCreationStatus": {
+        "type": "string",
+        "enum": [
+          "created",
+          "processing",
+          "success",
+          "rejected"
+        ]
+      },
+      "VaultsCreatorDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "auth0Id": {
+            "type": "string"
+          },
+          "vaults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreatorVaultDto"
+            }
+          },
+          "creationStatus": {
+            "$ref": "#/components/schemas/VaultsCreationStatus"
+          }
+        },
+        "required": [
+          "id",
+          "auth0Id",
+          "vaults",
+          "creationStatus"
+        ]
+      },
+      "VaultsCreationStatusDto": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/VaultsCreationStatus"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "PaymasterServiceRequestDto": {
+        "type": "object",
+        "properties": {
+          "jsonrpc": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number"
+          },
+          "method": {
+            "type": "string"
+          },
+          "params": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "jsonrpc",
+          "id",
+          "method",
+          "params"
+        ]
+      },
+      "PaymasterServiceResponseDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateFundingNoteDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateCustomerFromKycDTO": {
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "full_name",
+          "email",
+          "type"
+        ]
+      },
+      "CreateCustomerDTO": {
+        "type": "object",
+        "properties": {
+          "customer": {
+            "description": "Customer details from KYC",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreateCustomerFromKycDTO"
+              }
+            ]
+          },
+          "privyWalletAddress": {
+            "type": "string",
+            "description": "Privy wallet address (EOA wallet)",
+            "example": "0x1234567890abcdef1234567890abcdef12345678"
+          },
+          "privySmartWalletAddress": {
+            "type": "string",
+            "description": "Privy smart wallet address (smart contract wallet)",
+            "example": "0xabcdef1234567890abcdef1234567890abcdef12"
+          },
+          "tosAccepted": {
+            "type": "boolean",
+            "description": "Indicates that the user has accepted the terms of service in your application",
+            "example": true,
+            "default": true
+          },
+          "signedAgreementId": {
+            "type": "string",
+            "description": "Internal identifier for the signed TOS agreement that can be used for attestation"
+          },
+          "developer_accepted_tos": {
+            "type": "boolean",
+            "description": "Indicates that the developer has accepted the terms of service on behalf of the user",
+            "example": true,
+            "default": true
+          }
+        },
+        "required": [
+          "customer",
+          "privyWalletAddress",
+          "privySmartWalletAddress",
+          "tosAccepted",
+          "developer_accepted_tos"
+        ]
+      },
+      "Function": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateBankingInfoDto": {
+        "type": "object",
+        "properties": {
+          "bridgeCustomerId": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "description": "Bridge customer ID"
+          },
+          "bankingInfo": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CreateUsExternalAccountDTO"
+              },
+              {
+                "$ref": "#/components/schemas/CreateIbanExternalAccountDTO"
+              }
+            ],
+            "description": "Banking information",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Function"
+              }
+            ]
+          }
+        },
+        "required": [
+          "bridgeCustomerId",
+          "bankingInfo"
+        ]
+      },
+      "BankingInfoEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "The Auth0 ID associated with the user"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the banking information record"
+          },
+          "account_type": {
+            "type": "string",
+            "description": "Type of bank account (e.g., checking, savings)"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency associated with the account (e.g., USD, EUR)"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Customer ID linked to the user in your system"
+          },
+          "account_owner_name": {
+            "type": "string",
+            "description": "Full name of the account owner"
+          },
+          "account_owner_type": {
+            "type": "string",
+            "description": "Individual or Bussiness"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First anme"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name"
+          },
+          "business_name": {
+            "type": "string",
+            "description": "business name"
+          },
+          "bank_name": {
+            "type": "string",
+            "description": "Name of the bank where the account is held"
+          },
+          "last_4": {
+            "type": "string",
+            "description": "Last 4 digits of the account number"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Whether the account is active or not"
+          },
+          "beneficiary_address_valid": {
+            "type": "boolean",
+            "description": "Indicates whether the beneficiary address is valid"
+          },
+          "account": {
+            "type": "object",
+            "description": "Account details including last 4 digits, routing number, and account type",
+            "properties": {
+              "last_4": {
+                "type": "string"
+              },
+              "routing_number": {
+                "type": "string"
+              },
+              "checking_or_savings": {
+                "type": "string"
+              }
+            }
+          },
+          "iban": {
+            "type": "object",
+            "description": "Iban account details including last 4 digits",
+            "properties": {
+              "last_4": {
+                "type": "string"
+              },
+              "bic": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the banking information was created"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the banking information was last updated"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "account_type",
+          "currency",
+          "customer_id",
+          "account_owner_name",
+          "account_owner_type",
+          "first_name",
+          "last_name",
+          "business_name",
+          "bank_name",
+          "last_4",
+          "active",
+          "beneficiary_address_valid",
+          "account",
+          "iban",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "CheckKycStatusDto": {
+        "type": "object",
+        "properties": {
+          "bridgeKYCId": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "description": "Bridge.xyz`s KYC Link Identifier"
+          }
+        },
+        "required": [
+          "bridgeKYCId"
+        ]
+      },
+      "CreateCustomerFromKycResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "kyc_link": {
+            "type": "string"
+          },
+          "tos_link": {
+            "type": "string"
+          },
+          "kyc_status": {
+            "type": "string"
+          },
+          "rejection_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tos_status": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "customer_id": {
+            "type": "string"
+          },
+          "persona_inquiry_type": {
+            "type": "string"
+          },
+          "virtualAccountsCreated": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "full_name",
+          "email",
+          "type",
+          "kyc_link",
+          "tos_link",
+          "kyc_status",
+          "rejection_reasons",
+          "tos_status",
+          "created_at",
+          "customer_id",
+          "persona_inquiry_type"
+        ]
+      },
+      "CreateLiquidationAddressShortDTO": {
+        "type": "object",
+        "properties": {
+          "percentage": {
+            "type": "string",
+            "example": "0.5",
+            "description": "Percent of the fee"
+          },
+          "bridgeExternalAccountId": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "description": "Bridge external account Id, from bankin-info entity"
+          },
+          "vaultName": {
+            "type": "string",
+            "example": "My Direct vault"
+          }
+        },
+        "required": [
+          "percentage",
+          "bridgeExternalAccountId",
+          "vaultName"
+        ]
+      },
+      "LiquidationAddressEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "The Auth0 ID associated with the user"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the liquidation address record"
+          },
+          "bridgeLiquidationAddressId": {
+            "type": "string",
+            "description": "The Bridge liquidation address ID associated with the user"
+          },
+          "chain": {
+            "type": "string",
+            "description": "The blockchain chain associated with the liquidation address (e.g., Ethereum, Bitcoin)"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state or status of the liquidation address"
+          },
+          "address": {
+            "type": "string",
+            "description": "The address associated with the liquidation"
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency used for the liquidation (e.g., USD, EUR, BTC)"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the liquidation address record was created"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the liquidation address record was last updated"
+          },
+          "developer_fee": {
+            "type": "object",
+            "description": "Developer fee details associated with the liquidation address",
+            "properties": {
+              "percent": {
+                "type": "string"
+              }
+            }
+          },
+          "external_account_id": {
+            "type": "string",
+            "description": "External account ID related to the liquidation address"
+          },
+          "destination_currency": {
+            "type": "string",
+            "description": "Currency to be received at the destination address"
+          },
+          "destination_payment_rail": {
+            "type": "string",
+            "description": "Payment rail used for the destination transaction (e.g., SWIFT, PayPal)"
+          },
+          "custom_developer_fee_percent": {
+            "type": "string",
+            "description": "Custom developer fee percentage for the liquidation process"
+          },
+          "vault_name": {
+            "type": "string",
+            "description": "Vault name"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "bridgeLiquidationAddressId",
+          "chain",
+          "state",
+          "address",
+          "currency",
+          "created_at",
+          "updated_at",
+          "developer_fee",
+          "external_account_id",
+          "destination_currency",
+          "destination_payment_rail",
+          "custom_developer_fee_percent",
+          "vault_name"
+        ]
+      },
+      "GetLiqAddressDrainHistoryDTO": {
+        "type": "object",
+        "properties": {
+          "liqAddressId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "liqAddressId"
+        ]
+      },
+      "GetLiqAddressDrainHistoryResponseDTO": {
+        "type": "object",
+        "properties": {}
+      },
+      "VirtualAccountDestinationDto": {
+        "type": "object",
+        "properties": {
+          "payment_rail": {
+            "type": "string",
+            "description": "The payment rail used for the transaction.",
+            "example": "base"
+          },
+          "currency": {
+            "type": "string",
+            "description": "The currency of the destination.",
+            "enum": [
+              "usdc"
+            ],
+            "example": "usdc"
+          },
+          "address": {
+            "type": "string",
+            "description": "The crypto wallet address that the customer wishes to receive funds at.",
+            "example": "0x1234567890abcdef1234567890abcdef12345678"
+          }
+        },
+        "required": [
+          "payment_rail",
+          "currency",
+          "address"
+        ]
+      },
+      "VirtualAccountEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "The Auth0 ID associated with the user"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the liquidation address record"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the virtual account.",
+            "example": "active"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier.",
+            "example": "cust_abc123"
+          },
+          "source_deposit_instructions": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SourceDepositInstructionsUsDto"
+              },
+              {
+                "$ref": "#/components/schemas/SourceDepositInstructionsIbanDto"
+              }
+            ],
+            "description": "Banking information",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Function"
+              }
+            ]
+          },
+          "destination": {
+            "description": "Destination details for the transaction.",
+            "example": {
+              "payment_rail": "base",
+              "currency": "usdc",
+              "address": "0x1234567890abcdef1234567890abcdef12345678"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VirtualAccountDestinationDto"
+              }
+            ]
+          },
+          "developer_fee_percent": {
+            "type": "string",
+            "description": "Developer fee percentage.",
+            "example": "1.0"
+          },
+          "vault_name": {
+            "type": "string",
+            "description": "Custom name of the virtual account. (vault)",
+            "example": "My virtual account"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "status",
+          "customer_id",
+          "source_deposit_instructions",
+          "destination",
+          "developer_fee_percent",
+          "vault_name"
+        ]
+      },
+      "CreateUnifiedAccountDto": {
+        "type": "object",
+        "properties": {
+          "vaultName": {
+            "type": "string",
+            "example": "My Vault",
+            "description": "Name for the vault/account"
+          },
+          "transferType": {
+            "type": "string",
+            "example": "bridge",
+            "description": "Transfer type - bridge for traditional Bridge flow, direct_web3 for direct Web3 transfers",
+            "enum": [
+              "bridge",
+              "direct_web3"
+            ],
+            "default": "bridge"
+          },
+          "feePercentage": {
+            "type": "string",
+            "example": "1.5",
+            "description": "Developer fee percentage"
+          },
+          "chain": {
+            "type": "string",
+            "example": "base",
+            "description": "Blockchain chain",
+            "enum": [
+              "base"
+            ],
+            "default": "base"
+          },
+          "currency": {
+            "type": "string",
+            "example": "usdc",
+            "description": "Currency type",
+            "enum": [
+              "usdc",
+              "usdt",
+              "eurc"
+            ],
+            "default": "usdc"
+          },
+          "destinationPaymentRail": {
+            "type": "string",
+            "example": "base",
+            "description": "Payment rail for destination",
+            "enum": [
+              "ach",
+              "wire",
+              "sepa",
+              "base"
+            ]
+          },
+          "destinationCurrency": {
+            "type": "string",
+            "example": "usdc",
+            "description": "Destination currency",
+            "enum": [
+              "usd",
+              "eur",
+              "usdc",
+              "usdt",
+              "eurc"
+            ]
+          },
+          "destinationAddress": {
+            "type": "string",
+            "example": "0x1234567890abcdef1234567890abcdef12345678",
+            "description": "Destination address for crypto payments (required for direct Web3 transfers)"
+          },
+          "bankingInfo": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CreateUsExternalAccountDTO"
+              },
+              {
+                "$ref": "#/components/schemas/CreateIbanExternalAccountDTO"
+              }
+            ],
+            "description": "Banking information (required for fiat destinations)",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Function"
+              }
+            ]
+          },
+          "destinationWireMessage": {
+            "type": "string",
+            "example": "Payment for services",
+            "description": "Wire message for wire transfers"
+          },
+          "destinationSepaReference": {
+            "type": "string",
+            "example": "SEPA-REF-123",
+            "description": "SEPA reference for SEPA transfers"
+          }
+        },
+        "required": [
+          "vaultName",
+          "transferType",
+          "chain",
+          "currency",
+          "destinationPaymentRail",
+          "destinationCurrency"
+        ]
+      },
+      "VirtualAccountSourceDto": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "The source currency.",
+            "enum": [
+              "usd",
+              "eur"
+            ],
+            "example": "usd"
+          }
+        },
+        "required": [
+          "currency"
+        ]
+      },
+      "CreateBridgeVirtualAccountDto": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "Source details including the currency type.",
+            "example": {
+              "currency": "usd"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VirtualAccountSourceDto"
+              }
+            ]
+          },
+          "destination": {
+            "description": "Destination details for the transaction.",
+            "example": {
+              "payment_rail": "base",
+              "currency": "usdc",
+              "address": "0x1234567890abcdef1234567890abcdef12345678"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VirtualAccountDestinationDto"
+              }
+            ]
+          },
+          "developer_fee_percent": {
+            "type": "string",
+            "description": "Developer fee percentage.",
+            "example": "1.0"
+          }
+        },
+        "required": [
+          "source",
+          "destination",
+          "developer_fee_percent"
+        ]
+      },
+      "CreateVirtualAccountDto": {
+        "type": "object",
+        "properties": {
+          "bridgeCustomerId": {
+            "type": "string",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "description": "Bridge customer ID"
+          },
+          "virtualAccountData": {
+            "description": "virtual account information",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreateBridgeVirtualAccountDto"
+              }
+            ]
+          },
+          "vaultName": {
+            "type": "string",
+            "example": "My Direct vault"
+          }
+        },
+        "required": [
+          "bridgeCustomerId",
+          "virtualAccountData",
+          "vaultName"
+        ]
+      },
+      "VirtualAccountActivityItemSourceDetailsDto": {
+        "type": "object",
+        "properties": {
+          "payment_rail": {
+            "type": "string",
+            "description": "The payment rail used for the transaction.",
+            "example": "ach_push"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the transaction.",
+            "example": "ACH description"
+          },
+          "sender_name": {
+            "type": "string",
+            "description": "The name of the sender.",
+            "example": "The name of the business or individual who initiated the ACH"
+          },
+          "sender_bank_routing_number": {
+            "type": "string",
+            "description": "The routing number of the sender bank.",
+            "example": "123456789"
+          },
+          "trace_number": {
+            "type": "string",
+            "description": "A unique 15-digit trace number used for tracking.",
+            "example": "123456789012345"
+          }
+        },
+        "required": [
+          "payment_rail",
+          "description",
+          "sender_name",
+          "sender_bank_routing_number",
+          "trace_number"
+        ]
+      },
+      "VirtualAccountActivityItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique event identifier.",
+            "example": "va_event_123"
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Customer identifier.",
+            "example": "cust_alice"
+          },
+          "virtual_account_id": {
+            "type": "string",
+            "description": "Virtual account identifier.",
+            "example": "va_123"
+          },
+          "type": {
+            "type": "string",
+            "description": "Event type.",
+            "example": "funds_received"
+          },
+          "amount": {
+            "type": "string",
+            "description": "Transaction amount.",
+            "example": "123.45"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Transaction currency.",
+            "example": "usd"
+          },
+          "developer_fee_amount": {
+            "type": "string",
+            "description": "Developer fee amount.",
+            "example": "0.0"
+          },
+          "exchange_fee_amount": {
+            "type": "string",
+            "description": "Exchange fee amount.",
+            "example": "0.0"
+          },
+          "subtotal_amount": {
+            "type": "string",
+            "description": "Subtotal amount.",
+            "example": "123.45"
+          },
+          "gas_fee": {
+            "type": "string",
+            "description": "Gas fee amount.",
+            "example": "0.0"
+          },
+          "deposit_id": {
+            "type": "string",
+            "description": "Deposit identifier.",
+            "example": "deposit_123"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was created.",
+            "example": "2024-01-01T00:00:00.000Z"
+          },
+          "source": {
+            "description": "Source details of the transaction.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VirtualAccountActivityItemSourceDetailsDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "customer_id",
+          "virtual_account_id",
+          "type",
+          "amount",
+          "currency",
+          "developer_fee_amount",
+          "exchange_fee_amount",
+          "subtotal_amount",
+          "gas_fee",
+          "deposit_id",
+          "created_at",
+          "source"
+        ]
+      },
+      "DirectRecipientEntity": {
+        "type": "object",
+        "properties": {
+          "auth0Id": {
+            "type": "string",
+            "description": "User Auth0 ID"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique recipient ID"
+          },
+          "vaultName": {
+            "type": "string",
+            "description": "Vault name"
+          },
+          "destinationAddress": {
+            "type": "string",
+            "description": "Destination Ethereum address"
+          },
+          "chain": {
+            "type": "string",
+            "description": "Blockchain chain (always base for now)"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency (always usdc for now)"
+          },
+          "feePercentage": {
+            "type": "string",
+            "description": "Developer fee percentage"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": [
+          "auth0Id",
+          "id",
+          "vaultName",
+          "destinationAddress",
+          "chain",
+          "currency",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "TVaultFundsStatisticDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "date"
+        ]
+      },
+      "VaultInfoDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TShareRoleDto"
+            }
+          },
+          "profitSwitchName": {
+            "type": "string"
+          },
+          "profitSwitchAmount": {
+            "type": "number"
+          },
+          "profitSwitchAddress": {
+            "type": "string"
+          },
+          "ownerName": {
+            "type": "string"
+          },
+          "ownerEmail": {
+            "type": "string"
+          },
+          "adminWalletAddress": {
+            "type": "string"
+          },
+          "vaultFeePercentage": {
+            "type": "number"
+          },
+          "taxFormEnabled": {
+            "type": "boolean"
+          },
+          "agreeToTOSAndPP": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "vaultAddress": {
+            "type": "string"
+          },
+          "watching": {
+            "type": "boolean"
+          },
+          "currentFunds": {
+            "type": "string"
+          },
+          "totalPaid": {
+            "type": "string"
+          },
+          "alreadyClaimed": {
+            "type": "boolean"
+          },
+          "tokenAddress": {
+            "type": "string"
+          },
+          "tokenId": {
+            "type": "string"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "claimable": {
+            "type": "string"
+          },
+          "shareholderManagerAddress": {
+            "type": "string"
+          },
+          "transactionHash": {
+            "type": "string"
+          },
+          "transactionStatus": {
+            "$ref": "#/components/schemas/TRANSACTION_STATUS"
+          },
+          "selfManaged": {
+            "type": "boolean"
+          },
+          "vaultFundsStatistics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TVaultFundsStatisticDto"
+            }
+          }
+        },
+        "required": [
+          "userId",
+          "projectName",
+          "roles",
+          "ownerName",
+          "ownerEmail",
+          "adminWalletAddress",
+          "vaultFeePercentage",
+          "agreeToTOSAndPP",
+          "id",
+          "watching",
+          "shareholderManagerAddress",
+          "vaultFundsStatistics"
+        ]
+      },
+      "VaultTransactionStatusDTO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/TRANSACTION_STATUS"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "SelfManagedVaultTransactionStatusDTO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/TRANSACTION_STATUS"
+          },
+          "info": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string"
+              },
+              "p": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "VaultCreationDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TShareRoleDto"
+            }
+          },
+          "profitSwitchName": {
+            "type": "string"
+          },
+          "profitSwitchAmount": {
+            "type": "number"
+          },
+          "profitSwitchAddress": {
+            "type": "string"
+          },
+          "ownerName": {
+            "type": "string"
+          },
+          "ownerEmail": {
+            "type": "string"
+          },
+          "adminWalletAddress": {
+            "type": "string"
+          },
+          "vaultFeePercentage": {
+            "type": "number"
+          },
+          "taxFormEnabled": {
+            "type": "boolean"
+          },
+          "agreeToTOSAndPP": {
+            "type": "boolean"
+          },
+          "businessName": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "tinSsn": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "projectName",
+          "roles",
+          "ownerName",
+          "ownerEmail",
+          "adminWalletAddress",
+          "vaultFeePercentage",
+          "agreeToTOSAndPP"
+        ]
+      },
+      "UpdateRoleEmailDto": {
+        "type": "object",
+        "properties": {
+          "tokenAddress": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tokenAddress"
+        ]
+      },
+      "VaultKeysDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TShareRoleDto"
+            }
+          },
+          "vaultFeePercentage": {
+            "type": "number"
+          },
+          "vaultAddress": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "tokenAddress": {
+            "type": "string"
+          },
+          "tokenId": {
+            "type": "string"
+          },
+          "walletAddress": {
+            "type": "string"
+          },
+          "claimable": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "projectName",
+          "roles",
+          "vaultFeePercentage",
+          "amount",
+          "tokenAddress",
+          "tokenId",
+          "walletAddress",
+          "claimable"
+        ]
+      },
+      "SignVaultTransactionDto": {
+        "type": "object",
+        "properties": {
+          "vaultId": {
+            "type": "string"
+          },
+          "p": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "vaultId",
+          "p",
+          "address"
+        ]
+      },
+      "SignVaultTransactionResultDto": {
+        "type": "object",
+        "properties": {
+          "signature": {
+            "type": "string"
+          }
+        }
+      },
+      "PersonaInquiryIdResponseDTO": {
+        "type": "object",
+        "properties": {
+          "inquiryId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "inquiryId"
+        ]
+      },
+      "PersonaReviewStatus": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "completed"
+        ]
+      },
+      "PersonaApplicantDetailDTO": {
+        "type": "object",
+        "properties": {
+          "applicantStatus": {
+            "$ref": "#/components/schemas/PersonaReviewStatus"
+          }
+        },
+        "required": [
+          "applicantStatus"
+        ]
+      },
+      "PersonaApplicantResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "auth0Id": {
+            "type": "string"
+          },
+          "applicantStatus": {
+            "$ref": "#/components/schemas/PersonaReviewStatus"
+          }
+        },
+        "required": [
+          "id",
+          "auth0Id",
+          "applicantStatus"
+        ]
+      },
+      "CreateAddressActivityDto": {
+        "type": "object",
+        "properties": {
+          "webhookId": {
+            "type": "string",
+            "example": "wh_octjglnywaupz6th",
+            "description": "Unique ID of the webhook destination."
+          },
+          "id": {
+            "type": "string",
+            "example": "whevt_ogrc5v64myey69ux",
+            "description": "ID of the event."
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2022-02-28T17:48:53.306Z",
+            "description": "Timestamp when the webhook was created."
+          },
+          "type": {
+            "type": "string",
+            "example": "ADDRESS_ACTIVITY",
+            "description": "Webhook event type."
+          },
+          "event": {
+            "type": "object",
+            "description": "Mined transaction object."
+          }
+        },
+        "required": [
+          "webhookId",
+          "id",
+          "createdAt",
+          "type",
+          "event"
+        ]
+      },
+      "CreateSupportTicketDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Mohamed"
+          },
+          "email": {
+            "type": "string",
+            "example": "email@email.com"
+          },
+          "subject": {
+            "type": "string",
+            "example": "I need Help"
+          },
+          "message": {
+            "type": "string",
+            "example": "message body"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "subject",
+          "message"
+        ]
+      },
+      "TransactionItemResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Globally unique ID for the transaction item"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "alchemy",
+              "bridge",
+              "manual"
+            ],
+            "description": "Source of the transaction"
+          },
+          "sourceEventId": {
+            "type": "string",
+            "description": "ID from the originating system"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "virtualAccountId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "funds_received",
+              "payment_submitted",
+              "refund",
+              "funds_sent"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount in decimal"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "developerFeeAmount": {
+            "type": "number",
+            "description": "Developer fee amount"
+          },
+          "exchangeFeeAmount": {
+            "type": "number",
+            "description": "Exchange fee amount"
+          },
+          "depositId": {
+            "type": "string",
+            "description": "Deposit ID"
+          },
+          "description": {
+            "type": "string",
+            "description": "Transaction description"
+          },
+          "senderName": {
+            "type": "string",
+            "description": "Name of the sender"
+          },
+          "traceNumber": {
+            "type": "string",
+            "description": "Trace number or IMAD"
+          },
+          "fromAddress": {
+            "type": "string",
+            "description": "From Address"
+          },
+          "toAddress": {
+            "type": "string",
+            "description": "To Address"
+          },
+          "hash": {
+            "type": "string",
+            "description": "Hash of the transaction"
+          },
+          "network": {
+            "type": "string",
+            "description": "Network of the transaction"
+          },
+          "senderUser": {
+            "type": "object"
+          },
+          "receiverUser": {
+            "type": "object"
+          },
+          "occurredAt": {
+            "type": "number",
+            "description": "Transaction date"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "sourceEventId",
+          "customerId",
+          "virtualAccountId",
+          "type",
+          "amount",
+          "currency",
+          "developerFeeAmount",
+          "exchangeFeeAmount",
+          "depositId",
+          "description",
+          "senderName",
+          "traceNumber",
+          "fromAddress",
+          "toAddress",
+          "hash",
+          "network",
+          "senderUser",
+          "receiverUser",
+          "occurredAt",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "GetTransactionItemsResponseDto": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "description": "List of paginated transaction items for the current page",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionItemResponseDto"
+            }
+          },
+          "limit": {
+            "type": "number",
+            "description": "Number of items returned in this page",
+            "example": 20
+          },
+          "count": {
+            "type": "number",
+            "description": "Number of items returned in this page",
+            "example": 17
+          },
+          "nextCursor": {
+            "type": "object",
+            "description": "Base64-encoded cursor for fetching the next page. Pass this as `cursor` in the next request.",
+            "example": "eyJpZCI6InR4XzEyMzQ1NiJ9"
+          }
+        },
+        "required": [
+          "items",
+          "limit",
+          "count"
+        ]
+      },
+      "CurrencyRateDto": {
+        "type": "object",
+        "properties": {
+          "usd": {
+            "type": "number",
+            "description": "Rate in USD",
+            "example": 1
+          },
+          "eur": {
+            "type": "number",
+            "description": "Rate in EUR",
+            "example": 0.91
+          }
+        },
+        "required": [
+          "usd",
+          "eur"
+        ]
+      },
+      "ForexRatesResponseDto": {
+        "type": "object",
+        "properties": {
+          "usdt": {
+            "description": "USDT rates",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyRateDto"
+              }
+            ]
+          },
+          "usdc": {
+            "description": "USDC rates",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyRateDto"
+              }
+            ]
+          },
+          "eurc": {
+            "description": "EURC rates",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyRateDto"
+              }
+            ]
+          },
+          "lastUpdated": {
+            "type": "number",
+            "description": "Timestamp when rates were last updated",
+            "example": 1234567890
+          }
+        },
+        "required": [
+          "usdt",
+          "usdc",
+          "eurc",
+          "lastUpdated"
+        ]
+      },
+      "UsBankAccount": {
+        "type": "object",
+        "properties": {
+          "account_number": {
+            "type": "string",
+            "example": "123456789",
+            "description": "Account number"
+          },
+          "routing_number": {
+            "type": "string",
+            "example": "021000021",
+            "description": "Routing number"
+          }
+        },
+        "required": [
+          "account_number",
+          "routing_number"
+        ]
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "street_line_1": {
+            "type": "string",
+            "example": "123 Main St",
+            "description": "Street address line 1"
+          },
+          "street_line_2": {
+            "type": "string",
+            "example": "Apt 4B",
+            "description": "Street address line 2"
+          },
+          "city": {
+            "type": "string",
+            "example": "New York",
+            "description": "City"
+          },
+          "state": {
+            "type": "string",
+            "example": "NY",
+            "description": "State"
+          },
+          "postal_code": {
+            "type": "string",
+            "example": "10001",
+            "description": "Postal code"
+          },
+          "country": {
+            "type": "string",
+            "example": "US",
+            "description": "Country code"
+          }
+        },
+        "required": [
+          "street_line_1",
+          "street_line_2",
+          "city",
+          "postal_code",
+          "country"
+        ]
+      },
+      "CreateUsExternalAccountDTO": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "description": "Us bank account details",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UsBankAccount"
+              }
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "usd"
+            ],
+            "description": "Currency",
+            "example": "usd"
+          },
+          "account_owner_name": {
+            "type": "string",
+            "example": "John Doe",
+            "description": "Account owner name"
+          },
+          "bank_name": {
+            "type": "string",
+            "example": "Chase Bank",
+            "description": "Bank name"
+          },
+          "address": {
+            "description": "Billing address",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          }
+        },
+        "required": [
+          "account",
+          "currency",
+          "account_owner_name",
+          "bank_name",
+          "address"
+        ]
+      },
+      "Iban": {
+        "type": "object",
+        "properties": {
+          "account_number": {
+            "type": "string",
+            "example": "AL35202111090000000001234567",
+            "description": "The International Bank Account Number (IBAN) that will be used to send the funds"
+          },
+          "bic": {
+            "type": "string",
+            "example": "STANALTR",
+            "description": "The Bank Identifier Code (BIC) that will be used to send the funds"
+          },
+          "country": {
+            "type": "string",
+            "example": "ALB",
+            "description": "Country in which the bank account is located. It`s a three-letter alpha-3 country code as defined in the ISO 3166-1 spec."
+          }
+        },
+        "required": [
+          "account_number",
+          "bic",
+          "country"
+        ]
+      },
+      "CreateIbanExternalAccountDTO": {
+        "type": "object",
+        "properties": {
+          "iban": {
+            "description": "Us bank account details",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Iban"
+              }
+            ]
+          },
+          "account_type": {
+            "type": "string",
+            "enum": [
+              "iban"
+            ],
+            "description": "Type of the bank accoun",
+            "example": "iban"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "eur"
+            ],
+            "description": "Currency",
+            "example": "eur"
+          },
+          "account_owner_type": {
+            "type": "string",
+            "enum": [
+              "individual",
+              "business"
+            ],
+            "description": "The type of the account ownership. Required when the account_type is iban. For individual ownership, first_name and last_name are required. For business ownership, business_name is required.",
+            "example": "individual"
+          },
+          "first_name": {
+            "type": "string",
+            "example": "John",
+            "description": "First name of the individual account holder. Required when the account_owner_type is individual"
+          },
+          "business_name": {
+            "type": "string",
+            "example": "John Doe LLC",
+            "description": "Business name of the business account holder. Required when the account_owner_type is business"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe",
+            "description": "First name of the individual account holder. Required when the account_owner_type is individual"
+          },
+          "account_owner_name": {
+            "type": "string",
+            "example": "John Doe",
+            "description": "Account owner name"
+          },
+          "bank_name": {
+            "type": "string",
+            "example": "Chase Bank",
+            "description": "Bank name"
+          },
+          "address": {
+            "description": "Billing address",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          }
+        },
+        "required": [
+          "iban",
+          "account_type",
+          "currency",
+          "account_owner_type",
+          "account_owner_name",
+          "bank_name",
+          "address"
+        ]
+      },
+      "SourceDepositInstructionsUsDto": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "The source currency, for US only usd",
+            "enum": [
+              "usd"
+            ],
+            "example": "usd"
+          },
+          "bank_beneficiary_name": {
+            "type": "object",
+            "description": "Bank beneficiary name.",
+            "example": "John Doe"
+          },
+          "bank_beneficiary_address": {
+            "type": "object",
+            "description": "Bank beneficiary name.",
+            "example": "John Doe"
+          },
+          "bank_name": {
+            "type": "string",
+            "description": "Bank name.",
+            "example": "Bank of America"
+          },
+          "bank_address": {
+            "type": "string",
+            "description": "Bank address.",
+            "example": "123 Main St, NY, USA"
+          },
+          "bank_routing_number": {
+            "type": "string",
+            "description": "Bank routing number.",
+            "example": "021000021"
+          },
+          "bank_account_number": {
+            "type": "string",
+            "description": "Bank account number.",
+            "example": "123456789"
+          },
+          "payment_rails": {
+            "description": "Available payment rails.",
+            "example": [
+              "ACH",
+              "Wire"
+            ],
+            "type": "array",
+            "items": {
+              "type": "array"
+            }
+          },
+          "payment_rail": {
+            "description": "Available payment rails. For EUR only sepa",
+            "example": "sepa",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "currency",
+          "bank_beneficiary_name",
+          "bank_beneficiary_address",
+          "bank_name",
+          "bank_address",
+          "bank_routing_number",
+          "bank_account_number",
+          "payment_rails",
+          "payment_rail"
+        ]
+      },
+      "SourceDepositInstructionsIbanDto": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "The source currency, for IBNA only eur",
+            "enum": [
+              "eur"
+            ],
+            "example": "eur"
+          },
+          "iban": {
+            "type": "string",
+            "description": "Account Iban Number",
+            "example": "X6099"
+          },
+          "bic": {
+            "type": "string",
+            "description": "Bank BIC Number",
+            "example": "MODRIE22XXX"
+          },
+          "account_holder_name": {
+            "type": "string",
+            "description": "Account holder name",
+            "example": "Bridge Building Sp.z.o.o."
+          },
+          "bank_name": {
+            "type": "string",
+            "description": "Bank name.",
+            "example": "Bank of America"
+          },
+          "bank_address": {
+            "type": "string",
+            "description": "Bank address.",
+            "example": "123 Main St, NY, USA"
+          },
+          "payment_rails": {
+            "description": "Available payment rails. For EUR only sepa",
+            "example": [
+              "sepa"
+            ],
+            "type": "array",
+            "items": {
+              "type": "array"
+            }
+          },
+          "payment_rail": {
+            "description": "Available payment rails. For EUR only sepa",
+            "example": "sepa",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "currency",
+          "iban",
+          "bic",
+          "account_holder_name",
+          "bank_name",
+          "bank_address",
+          "payment_rails",
+          "payment_rail"
+        ]
+      }
+    }
+  }
+}

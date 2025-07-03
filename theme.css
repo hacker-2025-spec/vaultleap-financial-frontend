@@ -1,0 +1,576 @@
+/* VaultLeap Design System - Theme */
+
+@import 'tokens.css';
+
+/* Apple-style Sandblasted Glass Card Styles */
+.glass-card {
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  -webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+  color: var(--color-text-primary);
+  padding: var(--space-xl);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Add subtle noise texture for sandblasted effect */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  z-index: -1;
+}
+
+/* Content layering */
+.glass-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Section-specific card styles - matching the flowing color scheme */
+.bg-hero .glass-card {
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-personas .glass-card {
+  border-color: rgba(94, 23, 235, 0.3);
+  box-shadow: 0 10px 30px rgba(94, 23, 235, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-showcase .glass-card {
+  border-color: rgba(176, 30, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(176, 30, 255, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-features .glass-card {
+  border-color: rgba(255, 41, 117, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 41, 117, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-how .glass-card {
+  border-color: rgba(255, 107, 43, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 107, 43, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-comparison .glass-card {
+  border-color: rgba(255, 213, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 213, 0, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Enhanced contrast for testimonials against green background */
+.bg-testimonials .glass-card {
+  border-color: rgba(0, 230, 118, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 230, 118, 0.15);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.bg-faq .glass-card {
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.bg-cta .glass-card {
+  border-color: rgba(0, 102, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.15);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: 9999px;
+  /* Distinctive button style for Satoshi font */
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  letter-spacing: -0.01em;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Primary Button - Adapts to section color */
+.btn-primary {
+  background: var(--color-spectrum-1);
+  border: none;
+  color: var(--color-text-on-dark);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 102, 255, 0.4);
+  filter: brightness(1.1);
+  color: var(--color-text-on-dark);
+}
+
+/* Section-specific primary buttons */
+.bg-personas .btn-primary {
+  background: var(--color-spectrum-2);
+  box-shadow: 0 4px 12px rgba(94, 23, 235, 0.3);
+}
+
+.bg-personas .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(94, 23, 235, 0.4);
+}
+
+.bg-showcase .btn-primary {
+  background: var(--color-spectrum-3);
+  box-shadow: 0 4px 12px rgba(176, 30, 255, 0.3);
+}
+
+.bg-showcase .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(176, 30, 255, 0.4);
+}
+
+.bg-features .btn-primary {
+  background: var(--color-spectrum-4);
+  box-shadow: 0 4px 12px rgba(255, 41, 117, 0.3);
+}
+
+.bg-features .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(255, 41, 117, 0.4);
+}
+
+.bg-how .btn-primary {
+  background: var(--color-spectrum-5);
+  box-shadow: 0 4px 12px rgba(255, 107, 43, 0.3);
+}
+
+.bg-how .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(255, 107, 43, 0.4);
+}
+
+.bg-comparison .btn-primary {
+  background: var(--color-spectrum-6);
+  box-shadow: 0 4px 12px rgba(255, 213, 0, 0.3);
+  color: var(--color-text-primary);
+}
+
+.bg-comparison .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(255, 213, 0, 0.4);
+}
+
+.bg-testimonials .btn-primary {
+  background: var(--color-spectrum-7);
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+}
+
+.bg-testimonials .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4);
+}
+
+.bg-faq .btn-primary {
+  background: var(--color-spectrum-8);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+}
+
+.bg-faq .btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: transparent;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Outline Button - Adapts to section color */
+.btn-outline {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: var(--color-spectrum-1);
+}
+
+.bg-personas .btn-outline {
+  color: var(--color-spectrum-2);
+}
+
+.bg-showcase .btn-outline {
+  color: var(--color-spectrum-3);
+}
+
+.bg-features .btn-outline {
+  color: var(--color-spectrum-4);
+}
+
+.bg-how .btn-outline {
+  color: var(--color-spectrum-5);
+}
+
+.bg-comparison .btn-outline {
+  color: var(--color-spectrum-6);
+}
+
+.bg-testimonials .btn-outline {
+  color: var(--color-spectrum-7);
+}
+
+.bg-faq .btn-outline {
+  color: var(--color-spectrum-8);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Typography Styles */
+/* Typography - Using Apple's strategy with black/near-black text for headings */
+h1,
+.h1 {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-lg);
+  color: #1c1c1e; /* Near-black for maximum contrast */
+}
+
+h2,
+.h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-lg);
+  color: #1c1c1e; /* Near-black for maximum contrast */
+}
+
+h3,
+.h3 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-md);
+  color: #1c1c1e; /* Near-black for maximum contrast */
+}
+
+h4,
+.h4 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-md);
+  color: #1c1c1e; /* Near-black for maximum contrast */
+}
+
+p {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: #2c2c2e; /* Slightly lighter than headings */
+  margin-bottom: var(--space-lg);
+}
+
+.subtitle {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-relaxed);
+  color: #3c3c3e; /* Slightly lighter than paragraph text */
+  margin-bottom: var(--space-xl);
+}
+
+/* Section Styles */
+.section {
+  min-height: 100vh;
+  padding: var(--space-3xl) 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo svg,
+.footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+/* Logo Animation */
+.logo-path {
+  stroke: url(#vaultleap-gradient);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 4200;
+  stroke-dashoffset: 4200;
+  animation: draw-logo 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.footer-logo .logo-path {
+  stroke: url(#vaultleap-gradient-footer);
+}
+
+@keyframes draw-logo {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-3xl);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section .container {
+  width: 100%;
+}
+
+/* Section Background Gradients - Flowing color transitions */
+.bg-hero {
+  background: var(--color-bg-hero);
+  position: relative;
+}
+
+.bg-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 20%, var(--color-accent-1), transparent 70%);
+  z-index: 0;
+}
+
+.bg-personas {
+  background: var(--color-bg-personas);
+  position: relative;
+}
+
+.bg-personas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, var(--color-accent-2), transparent 70%);
+  z-index: 0;
+}
+
+.bg-showcase {
+  background: var(--color-bg-showcase);
+  position: relative;
+}
+
+.bg-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, var(--color-accent-3), transparent 70%);
+  z-index: 0;
+}
+
+.bg-features {
+  background: var(--color-bg-features);
+  position: relative;
+}
+
+.bg-features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 30%, var(--color-accent-4), transparent 70%);
+  z-index: 0;
+}
+
+.bg-how {
+  background: var(--color-bg-how);
+  position: relative;
+}
+
+.bg-how::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, var(--color-accent-5), transparent 70%);
+  z-index: 0;
+}
+
+.bg-comparison {
+  background: var(--color-bg-comparison);
+  position: relative;
+}
+
+.bg-comparison::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, var(--color-accent-6), transparent 70%);
+  z-index: 0;
+}
+
+.bg-testimonials {
+  background: var(--color-bg-testimonials);
+  position: relative;
+}
+
+.bg-testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, var(--color-accent-7), transparent 70%);
+  z-index: 0;
+}
+
+.bg-faq {
+  background: var(--color-bg-faq);
+  position: relative;
+}
+
+.bg-faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 30%, var(--color-accent-8), transparent 70%);
+  z-index: 0;
+}
+
+.bg-cta {
+  background: var(--color-bg-cta);
+  position: relative;
+}
+
+.bg-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, var(--color-accent-1), transparent 70%);
+  z-index: 0;
+}
+
+.bg-footer {
+  background: var(--color-bg-footer);
+  color: var(--color-text-on-dark);
+  position: relative;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp var(--transition-slow) forwards;
+}
+
+.fade-up-delay-1 {
+  animation-delay: 100ms;
+}
+
+.fade-up-delay-2 {
+  animation-delay: 200ms;
+}
+
+.fade-up-delay-3 {
+  animation-delay: 300ms;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  h1,
+  .h1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  h2,
+  .h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h3,
+  .h3 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .glass-card {
+    padding: var(--space-lg);
+  }
+}

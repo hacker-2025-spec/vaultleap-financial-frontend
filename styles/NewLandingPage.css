@@ -1,0 +1,634 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Manrope:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+@import 'globals.css';
+
+@theme {
+  --font-currency: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  /* --font-banking: 'B612 Mono', 'Courier New', monospace; */
+  --font-icon: 'Material Icons Round', sans-serif;
+  --shadow-icon: 0 8px 32px rgba(31, 38, 135, 0.1);
+  --color-lblack: rgb(28, 28, 30);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    'Manrope',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    'Manrope',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes subtlePulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
+}
+
+/* Roller animations */
+.currency-roller {
+  @apply inline-block relative w-[4.5em] h-[1.42em] overflow-hidden align-baseline mx-1 text-center text-blue-500;
+  top: 0.35em;
+  left: -2.3em;
+}
+
+@media (max-width: 480px) {
+  .currency-roller {
+    left: -2.3em;
+    width: 5em;
+  }
+}
+
+.amount-roller {
+  @apply inline-block relative h-[1.2em] overflow-hidden min-w-[7em];
+}
+
+/* Mobile responsive fix for amount roller */
+@media (max-width: 768px) {
+  .amount-roller {
+    min-width: 5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .amount-roller {
+    min-width: 4em;
+  }
+}
+
+.roller-track {
+  @apply absolute w-full h-[200%] transition-transform duration-700 ease-in-out;
+}
+
+.roller-item {
+  @apply flex h-1/2 items-center justify-center w-full box-border text-4xl sm:text-7xl;
+}
+
+.currency-roller .roller-item {
+  @apply justify-start text-left pl-0;
+}
+
+.symbol-roller .roller-item {
+  @apply justify-center text-center;
+}
+
+.amount-roller .roller-item {
+  @apply justify-start text-left;
+}
+
+.vaultcard-button {
+  @apply text-[#0A66C2] text-sm font-semibold cursor-pointer bg-[rgba(10,102,194,0.1)] border border-[rgba(10,102,194,0.2)] rounded-lg px-[16px] py-[8px] transition duration-200 w-1/3;
+}
+
+.mobile-nav-links {
+  @apply flex flex-col items-center gap-4 w-full;
+}
+
+.mobile-nav-links a {
+  @apply text-[20px] font-semibold text-[#1c1c1e] p-2 px-4;
+}
+
+.banking-text {
+  @apply text-[12px] text-[rgba(28,28,30,0.6)] mb-1 font-medium;
+}
+
+.banking-text-detail {
+  @apply text-[15px] text-[rgba(28,28,30)] font-medium overflow-ellipsis;
+}
+
+.position-0 {
+  transform: translateY(0);
+}
+
+.position-1 {
+  transform: translateY(-50%);
+}
+
+.account-text {
+  @apply inline-block relative ml-[-2.6em];
+}
+
+/* Glass Styles */
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg text-white px-[40px] py-[32px] transition-all duration-300 relative overflow-hidden z-10;
+}
+
+.glass-card:hover {
+  @apply transform -translate-y-1 shadow-xl;
+}
+
+.glass-button {
+  @apply bg-white/15 backdrop-blur-md border border-white/30 rounded-lg text-white px-5 py-2.5 text-sm font-medium cursor-pointer transition-all duration-200;
+}
+
+.glass-button:hover {
+  @apply bg-white/25 transform -translate-y-0.5;
+}
+
+.account-number {
+  font-family: 'B612 Mono', monospace;
+  letter-spacing: 0.1em;
+  @apply font-bold text-[1.2em] text-gray-900;
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  @apply opacity-0 translate-y-3 transition-all duration-700 ease-out;
+}
+
+.animate-on-scroll.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+.shimmer {
+  @apply relative overflow-hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  pointer-events: none;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes animate-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom backgrounds with gradients */
+.bg-hero {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+}
+
+.bg-hero::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none z-0;
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(0, 102, 255, 0.2), transparent 50%),
+    radial-gradient(ellipse at 15% 85%, rgba(0, 102, 255, 0.25), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), transparent 70%);
+  filter: blur(40px);
+  animation: subtle-pulse 15s infinite ease-in-out alternate;
+}
+
+.bg-hero::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none z-0;
+  background-image:
+    radial-gradient(circle at 75% 25%, rgba(0, 170, 255, 0.15), transparent 20%),
+    radial-gradient(circle at 25% 65%, rgba(0, 102, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 85%, rgba(0, 102, 255, 0.1), transparent 15%),
+    radial-gradient(circle at 15% 35%, rgba(0, 170, 255, 0.1), transparent 15%);
+  filter: blur(8px);
+  animation: floating-accents 20s infinite ease-in-out alternate;
+}
+
+.bg-modern-tools {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+}
+
+.bg-modern-tools::before {
+  content: '';
+  @apply absolute inset-0 pointer-events-none z-0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    radial-gradient(circle at 75% 25%, rgba(180, 161, 244, 0.35), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(124, 77, 255, 0.3), transparent 55%),
+    radial-gradient(circle at 60% 60%, rgba(156, 118, 240, 0.25), transparent 45%);
+  filter: blur(45px);
+}
+
+.bg-modern-tools::after {
+  content: '';
+  @apply absolute inset-0 pointer-events-none z-0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 65% 35%, rgba(180, 161, 244, 0.25), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(124, 77, 255, 0.22), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(180, 161, 244, 0.2), transparent 10%),
+    radial-gradient(circle at 15% 85%, rgba(156, 118, 240, 0.18), transparent 8%);
+  filter: blur(8px);
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.section {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Additional background styles for sections */
+.bg-personas {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-personas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Green accent gradients */ radial-gradient(circle at 75% 25%, rgba(100, 220, 170, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(80, 200, 140, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with green accents */
+.bg-personas::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Green accent floating elements */ radial-gradient(circle at 65% 35%, rgba(100, 220, 170, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(80, 200, 140, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(100, 220, 170, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-features {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-features::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Vibrant coral accent gradients */ radial-gradient(circle at 75% 25%, rgba(255, 127, 102, 0.35), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 107, 82, 0.3), transparent 55%),
+    radial-gradient(circle at 60% 60%, rgba(255, 147, 122, 0.25), transparent 45%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with vibrant coral accents */
+.bg-features::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Vibrant coral accent floating elements */ radial-gradient(circle at 65% 35%, rgba(255, 127, 102, 0.25), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(255, 107, 82, 0.22), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(255, 127, 102, 0.2), transparent 10%),
+    radial-gradient(circle at 15% 85%, rgba(255, 147, 122, 0.18), transparent 8%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-showcase {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-showcase::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Teal accent gradients */ radial-gradient(circle at 75% 25%, rgba(80, 200, 200, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(60, 180, 180, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with teal accents */
+.bg-showcase::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Teal accent floating elements */ radial-gradient(circle at 65% 35%, rgba(80, 200, 200, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(60, 180, 180, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(80, 200, 200, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-how {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-how::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Vibrant indigo accent gradients */ radial-gradient(circle at 75% 25%, rgba(88, 86, 214, 0.35), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(94, 92, 230, 0.3), transparent 55%),
+    radial-gradient(circle at 60% 60%, rgba(120, 118, 240, 0.25), transparent 45%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with vibrant indigo accents */
+.bg-how::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Vibrant indigo accent floating elements */ radial-gradient(circle at 65% 35%, rgba(88, 86, 214, 0.25), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(94, 92, 230, 0.22), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(88, 86, 214, 0.2), transparent 10%),
+    radial-gradient(circle at 15% 85%, rgba(120, 118, 240, 0.18), transparent 8%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-comparison {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-comparison::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Pink accent gradients */ radial-gradient(circle at 75% 25%, rgba(255, 105, 180, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 105, 135, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with pink accents */
+.bg-comparison::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Pink accent floating elements */ radial-gradient(circle at 65% 35%, rgba(255, 105, 180, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(255, 105, 135, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(255, 105, 180, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-testimonials {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-testimonials::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Amber accent gradients */ radial-gradient(circle at 75% 25%, rgba(255, 191, 71, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 171, 51, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with amber accents */
+.bg-testimonials::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Amber accent floating elements */ radial-gradient(circle at 65% 35%, rgba(255, 191, 71, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(255, 171, 51, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(255, 191, 71, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-faq {
+  background: linear-gradient(135deg, #e8f4ff, #d4eaff, #b8daff, #94c6ff);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-faq::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Lavender accent gradients */ radial-gradient(circle at 75% 25%, rgba(204, 153, 255, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(204, 153, 255, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with lavender accents */
+.bg-faq::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Lavender accent floating elements */ radial-gradient(circle at 65% 35%, rgba(204, 153, 255, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(204, 153, 255, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(204, 153, 255, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.bg-cta {
+  background: linear-gradient(135deg, #d4eaff, #b8daff, #94c6ff, #70b2ff);
+  /* Enhanced Apple-style blue gradient */
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(112, 178, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 40%, rgba(148, 198, 255, 0.5), transparent 70%),
+    /* Purple accent gradients */ radial-gradient(circle at 75% 25%, rgba(187, 134, 252, 0.25), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(187, 134, 252, 0.2), transparent 55%);
+  filter: blur(45px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add subtle animated floating elements with purple accents */
+.bg-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(112, 178, 255, 0.15), transparent 15%),
+    radial-gradient(circle at 75% 75%, rgba(148, 198, 255, 0.15), transparent 15%),
+    /* Purple accent floating elements */ radial-gradient(circle at 65% 35%, rgba(187, 134, 252, 0.18), transparent 12%),
+    radial-gradient(circle at 35% 65%, rgba(187, 134, 252, 0.15), transparent 12%),
+    radial-gradient(circle at 85% 15%, rgba(187, 134, 252, 0.12), transparent 10%);
+  filter: blur(8px);
+  z-index: 0;
+  pointer-events: none;
+  animation: subtle-float 18s infinite ease-in-out alternate;
+}
+
+.testimonial-quote {
+  @apply font-['Manrope'] italic text-base sm:text-lg leading-relaxed object-bottom mb-6 relative pl-6;
+}
+
+/* Pseudo-elements can't use @apply, so use regular CSS for ::before */
+.testimonial-quote::before {
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -10px;
+  font-size: 1.875rem; /* text-3xl is 1.875rem in Tailwind */
+  color: #0066ff; /* Custom color, may need to extend Tailwind config */
+  opacity: 0.5;
+}
+
+.link-footer {
+  @apply text-xs !text-black transition-colors duration-200 py-0 sm:py-1 leading-relaxed tracking-tight hover:no-underline;
+}

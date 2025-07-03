@@ -1,0 +1,8 @@
+.kyc-modal .vl-modal__body {
+    padding: 0;
+    overflow: hidden;
+}
+
+.kyc-modal .vl-modal__body--content {
+    height: 780px; /* 30% taller than 600px (600 * 1.3 = 780) */
+}

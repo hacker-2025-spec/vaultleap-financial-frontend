@@ -1,0 +1,14 @@
+.dashboard__banking-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(600px, 1fr) 380px;
+  gap: 24px;
+}
+
+@media screen and (max-width: 1360px) {
+  .dashboard__banking-section {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+}

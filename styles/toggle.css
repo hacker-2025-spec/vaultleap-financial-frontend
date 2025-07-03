@@ -1,0 +1,44 @@
+.custom-toggle {
+  display: flex;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+  padding: 1px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-toggle-item {
+  flex: 1;
+  padding: 8px 16px;
+  text-align: center;
+  z-index: 1;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: 15px;
+}
+
+.custom-toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 50%;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.custom-toggle[data-state='business'] .custom-toggle-slider {
+  left: 50%;
+  right: 2px;
+}
+
+.custom-toggle-item[data-state='active'] {
+  color: #000;
+}
+
+.custom-toggle-item[data-state='inactive'] {
+  color: #6b7280;
+}

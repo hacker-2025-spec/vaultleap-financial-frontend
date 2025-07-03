@@ -1,0 +1,12 @@
+export const TWITTER_URL = 'https://x.com/Vaultleap'
+export const MEDIUM_RSS_URL = 'https://medium.com/feed/@klydo'
+export const VAULT_FEE_PERCENT_NORMAL = 0.75
+export const DIRECT_VAULT_FEE_PERCENT_NORMAL = 0.55
+export const DIRECT_VAULT_FEE_PERCENT_PREMIUM = 0.3
+export const VIRTUAL_ACCOUNT_FEE_PERCENT_NORMAL = 0.55
+export const VIRTUAL_ACCOUNT_FEE_PERCENT_PREMIUM = 0.3
+export const VAULT_FEE_PERCENT_PREMIUM = 0
+export const DEFAULT_SNACKBAR_TIMEOUT = 3000 // 3s
+export const FAST_SNACKBAR_TIMEOUT = 1500 // 1.5s
+export const GTAG_ID = 'G-BDNW42NYT5'
+export const TRUST_CENTER_URL = 'https://app.vanta.com/klydo.io/trust/gnk6xq50u88m520gcbb6t'

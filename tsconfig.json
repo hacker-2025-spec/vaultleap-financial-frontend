@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "target": "ES2020",
+    "baseUrl": ".",
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "paths": {
+      "@/*": ["./*"],
+      "styles/*": ["./styles/*"],
+      "utils/*": ["./utils/*"]
+    },
+    "noUnusedLocals": true,
+    "allowImportingTsExtensions": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["./","src", "views", "api", "assets", "components", "store", "utils", "config", "helpers", "lib", "types", "custom.d.ts"],
+  "exclude": ["node_modules", "templates", "dist", "vite.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

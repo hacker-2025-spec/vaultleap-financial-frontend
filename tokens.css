@@ -1,0 +1,136 @@
+/* VaultLeap Design System - Tokens */
+
+:root {
+  /* Colors - Using Apple's strategy with black/near-black for headings */
+  --color-text-primary: #1C1C1E;
+  --color-text-secondary: #2C2C2E;
+  --color-text-light: #636366;
+  --color-text-on-dark: #FFFFFF;
+
+  /* Brand Colors - Brighter and Bolder */
+  --color-brand-primary: #0066FF;
+  --color-brand-secondary: #00E5FF;
+  --color-brand-accent: #7C4DFF;
+
+  /* Flowing Color Spectrum - Blue Theme */
+  --color-spectrum-1: #0066FF;
+  /* Primary Blue */
+  --color-spectrum-2: #3E8EFC;
+  /* Medium Blue */
+  --color-spectrum-3: #6AADFF;
+  /* Light Blue */
+  --color-spectrum-4: #8FD3F4;
+  /* Sky Blue */
+  --color-spectrum-5: #0080FF;
+  /* Bright Blue */
+  --color-spectrum-6: #2B7FFF;
+  /* Royal Blue */
+  --color-spectrum-7: #4D97FF;
+  /* Soft Blue */
+  --color-spectrum-8: #00E5FF;
+  /* Cyan */
+
+  /* Section Background Colors - Richer gradient backgrounds */
+  --color-bg-hero: linear-gradient(135deg, #E8F3FF, #EEE6FF);
+  --color-bg-personas: linear-gradient(135deg, #EEE6FF, #F5E0FF);
+  --color-bg-showcase: linear-gradient(135deg, #F5E0FF, #FFE0F5);
+  --color-bg-features: linear-gradient(135deg, #FFE0F5, #FFF0E0);
+  --color-bg-how: linear-gradient(135deg, #FFF0E0, #FFFDDF);
+  --color-bg-comparison: linear-gradient(135deg, #FFFDDF, #E0FFF0);
+  --color-bg-testimonials: linear-gradient(135deg, #E0FFF0, #E0F8FF);
+  --color-bg-faq: linear-gradient(135deg, #E0F8FF, #E8F3FF);
+  --color-bg-cta: linear-gradient(135deg, #E8F3FF, #EEE6FF);
+  --color-bg-footer: #1C1C1E;
+
+  /* Accent Colors - Blue theme with transparency */
+  --color-accent-1: rgba(0, 102, 255, 0.3);
+  --color-accent-2: rgba(62, 142, 252, 0.3);
+  --color-accent-3: rgba(106, 173, 255, 0.3);
+  --color-accent-4: rgba(143, 211, 244, 0.3);
+  --color-accent-5: rgba(0, 128, 255, 0.3);
+  --color-accent-6: rgba(43, 127, 255, 0.3);
+  --color-accent-7: rgba(77, 151, 255, 0.3);
+  --color-accent-8: rgba(0, 229, 255, 0.3);
+
+  /* Apple-style Sandblasted Glass Effect */
+  --glass-background: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(30px);
+  --glass-saturate: saturate(180%);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --glass-radius: 16px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 40px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+
+  /* Typography */
+  --font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-banking: 'B612 Mono', 'Courier New', monospace;
+  --font-family-balance: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 64px;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Z-index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-fixed: 1200;
+  --z-index-modal-backdrop: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-tooltip: 1600;
+
+  /* Container Widths */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+}

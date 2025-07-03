@@ -1,0 +1,50 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "stage-vaultleap-frontend",
+      "image": "980921735225.dkr.ecr.us-east-1.amazonaws.com/stage-vaultleap-frontend:version_to_replace",
+      "cpu": 0,
+      "portMappings": [
+        {
+          "name": "container-port-80",
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp",
+          "appProtocol": "http"
+        }
+      ],
+      "environment": [],
+      "essential": true,
+      "environmentFiles": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "ulimits": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/stage-vaultleap-frontend",
+          "mode": "non-blocking",
+          "awslogs-create-group": "true",
+          "max-buffer-size": "25m",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "systemControls": []
+    }
+  ],
+  "family": "stage-vaultleap-frontend",
+  "executionRoleArn": "arn:aws:iam::980921735225:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "3072",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "enableFaultInjection": false
+}

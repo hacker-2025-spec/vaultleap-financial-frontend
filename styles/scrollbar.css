@@ -1,0 +1,15 @@
+/* Simple, neutral, unobtrusive scrollbar for VaultLeap */
+.scrollbar-simple {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 transparent;
+}
+.scrollbar-simple::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-simple::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+.scrollbar-simple::-webkit-scrollbar-track {
+  background: transparent;
+}
